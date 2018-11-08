@@ -1,0 +1,26 @@
+{
+  "name": "azurepipeline",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hacky1610/azurepipeline.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hacky1610/azurepipeline/issues"
+  },
+  "homepage": "https://github.com/hacky1610/azurepipeline#readme"
+}
