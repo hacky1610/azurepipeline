@@ -5,8 +5,8 @@ describe('Array', function() {
       assert.equal([1,2,3].indexOf(4), -1);
     });
     
-     it('should return -2 when the value is not present', function() {
-      assert.equal([1,2,3].indexOf(4), -1);
+     it('should return 3 when the value is not present', function() {
+      assert.equal([1,2,3,4].indexOf(4), -1);
     });
   });
 });
