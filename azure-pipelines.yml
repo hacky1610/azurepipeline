@@ -2,6 +2,7 @@
 # Build a general Node.js project with npm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+# https://github.com/MicrosoftDocs/pipelines-javascript/blob/master/azure-pipelines.yml
 
 pool:
   vmImage: 'Ubuntu 16.04'
@@ -19,3 +20,8 @@ steps:
 - script: 
     npm test
   displayName: 'Run test'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFiles: 'test-results.xml'
+    testRunTitle: 'Test results for JavaScript'
