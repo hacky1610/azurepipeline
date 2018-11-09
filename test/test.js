@@ -12,5 +12,9 @@ describe('Array', function() {
        it('should return 3 when the value is not present', function() {
       assert.equal([1,2,3,4].indexOf(8), 3);
     });
+    
+      it('should return 3 when the value is not present', function() {
+      assert.equal([1,2,3,4].indexOf(9), 3);
+    });
   });
 });
