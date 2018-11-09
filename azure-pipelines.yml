@@ -9,8 +9,7 @@ pool:
 
 steps:
 - script: | 
-    dir
-    cd /test
+    pwd
 
 - task: NodeTool@0
   inputs:
