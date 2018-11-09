@@ -10,7 +10,7 @@ pool:
 steps:
 - script: | 
     nodeDir=$(pwd)/NodeApp
-    $nodeDir
+    echo $nodeDir
 
 - task: NodeTool@0
   inputs:
