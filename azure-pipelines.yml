@@ -10,7 +10,7 @@ pool:
 steps:
 - script: | 
     dir
-    cd test
+    cd /test
 
 - task: NodeTool@0
   inputs:
