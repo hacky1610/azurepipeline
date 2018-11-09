@@ -11,6 +11,7 @@ steps:
 - script: | 
     pwd
     cd /home/vsts/work/1/s/test
+    pwd
 
 - task: NodeTool@0
   inputs:
