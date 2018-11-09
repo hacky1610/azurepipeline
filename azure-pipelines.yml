@@ -8,7 +8,9 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-  script: "dir"
+- script: | 
+    dir
+    cd test
 
 - task: NodeTool@0
   inputs:
