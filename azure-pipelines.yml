@@ -37,6 +37,6 @@ steps:
     testRunTitle: 'Test results for JavaScript'
 
 - script: |
-    cp '$(nodeDir)' '$(artifactDir)' -r
+    cp '$(nodeDir)' '$(artifactDir)/NodeApp' -r
   displayName: 'Copy Artifacts'
   continueOnError: true
