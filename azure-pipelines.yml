@@ -9,9 +9,8 @@ pool:
 
 steps:
 - script: | 
-    pwd
-    cd /home/vsts/work/1/s/test
-    pwd
+    curDir = pwd
+    echo "$curDir/NodeApp"
 
 - task: NodeTool@0
   inputs:
@@ -19,11 +18,12 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    pwd
+    cd /home/vsts/work/1/s/NodeApp
     npm install
   displayName: 'npm install'
 
 - script: 
+    cd /home/vsts/work/1/s/NodeApp
     npm test
   displayName: 'Run test'
   continueOnError: true
