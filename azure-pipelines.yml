@@ -20,13 +20,12 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    echo '$(nodeDir)'
-    cd $nodeDir
+    cd '$(nodeDir)'
     npm install
   displayName: 'npm install'
 
 - script: |
-    cd $nodeDir
+    cd '$(nodeDir)'
     npm test
   displayName: 'Run test'
   continueOnError: true
