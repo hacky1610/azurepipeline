@@ -8,7 +8,7 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-    nodeDir: '$CI_PROJECT_DIR /NodeApp'
+    nodeDir: '$(Build.SourcesDirectory)/NodeApp'
 
 steps:
 - script: | 
