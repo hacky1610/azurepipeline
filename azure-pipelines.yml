@@ -35,3 +35,8 @@ steps:
   inputs:
     testResultsFiles: '$(nodeDir)/test-results.xml'
     testRunTitle: 'Test results for JavaScript'
+
+- script: |
+    cp '$(nodeDir) $(artifactDir) -r'
+  displayName: 'Copy Artifacts'
+  continueOnError: true
