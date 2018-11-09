@@ -7,9 +7,11 @@
 pool:
   vmImage: 'Ubuntu 16.04'
 
+variables:
+    nodeDir: '$(pwd)/NodeApp'
+
 steps:
 - script: | 
-    nodeDir=$(pwd)/NodeApp
     echo $nodeDir
 
 - task: NodeTool@0
