@@ -9,10 +9,11 @@ pool:
 
 variables:
     nodeDir: '$(Build.SourcesDirectory)/NodeApp'
+    artifactDir: '$(Build.ArtifactStagingDirectory)'
 
 steps:
 - script: | 
-    echo '$nodeDir'
+    echo '$(artifactDir)'
 
 - task: NodeTool@0
   inputs:
