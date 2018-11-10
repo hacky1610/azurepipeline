@@ -38,10 +38,23 @@ steps:
     testRunTitle: 'Test results for JavaScript'
 
 - script: |
-    docker build -t azurenodeapp .
+    docker build -t 'hacky1610/azurenodeapp:$(Build.BuildId)' .
     docker images
   displayName: 'Build docker'
   continueOnError: true
+
+- task: Docker@1
+  displayName: Login
+  inputs:
+    azureSubscriptionEndpoint: 'Docker'
+    azureContainerRegistry: https://index.docker.io/v1
+    command: login
+
+- task: Docker@1
+  displayName: 'Push an image'
+  inputs:
+    command: 'push'
+    imageName: 'hacky1610/azurenodeapp:$(Build.BuildId)'
 
 - task: PublishBuildArtifacts@1
   inputs:
