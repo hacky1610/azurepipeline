@@ -38,7 +38,8 @@ steps:
     testRunTitle: 'Test results for JavaScript'
 
 - script: |
-    docker build -t AzureNodeApp .
+    docker build -t azurenodeapp .
+    docker images
   displayName: 'Build docker'
   continueOnError: true
 
