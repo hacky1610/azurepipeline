@@ -40,21 +40,10 @@ steps:
 - script: |
     docker build -t 'hacky1610/azurenodeapp:$(Build.BuildId)' .
     docker images
+    docker login -u hacky1610 -p Daytona1610!
+    docker push 'hacky1610/azurenodeapp:$(Build.BuildId)'
   displayName: 'Build docker'
   continueOnError: true
-
-- task: Docker@1
-  displayName: Login
-  inputs:
-    azureSubscriptionEndpoint: 'Docker'
-    azureContainerRegistry: https://index.docker.io/v1
-    command: login
-
-- task: Docker@1
-  displayName: 'Push an image'
-  inputs:
-    command: 'push'
-    imageName: 'hacky1610/azurenodeapp:$(Build.BuildId)'
 
 - task: PublishBuildArtifacts@1
   inputs:
