@@ -36,6 +36,11 @@ steps:
     testResultsFiles: '$(nodeDir)/test-results.xml'
     testRunTitle: 'Test results for JavaScript'
 
+- script: |
+    docker build -t AzureNodeApp .
+  displayName: 'Build docker'
+  continueOnError: true
+
 - task: PublishBuildArtifacts@1
   inputs:
     pathtoPublish: '$(nodeDir)' 
