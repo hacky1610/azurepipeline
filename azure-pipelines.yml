@@ -31,11 +31,12 @@ jobs:
         npm install
       displayName: 'npm install'
 
-    - script: |
+    - powershell: |
         cd '$(nodeDir)'
         npm test
+        Write-Output $LASTEXITCODE
       displayName: 'Run test'
-      continueOnError: true
+
 
     - task: PublishTestResults@2
       inputs:
