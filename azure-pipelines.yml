@@ -40,7 +40,7 @@ steps:
 - script: |
     docker build -t 'hacky1610/azurenodeapp:$(Build.BuildId)' .
     docker images
-    docker login -u hacky1610 -p Daytona1610!
+    docker login -u hacky1610 -p '$(hacky.docker.pwd)'
     docker push 'hacky1610/azurenodeapp:$(Build.BuildId)'
   displayName: 'Build docker'
   continueOnError: true
