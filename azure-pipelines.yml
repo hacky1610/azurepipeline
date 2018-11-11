@@ -11,6 +11,16 @@ jobs:
     inputs:
       versionSpec: '8.x'
       displayName: 'Install Node.js'
+      
+  - script: |
+    cd '$(nodeDir)'
+    npm install
+    displayName: 'npm install'
+
+  - script: |
+    cd '$(nodeDir)'
+    npm test
+    displayName: 'Run test'
 
 - job: Bar
   dependsOn: Foo
