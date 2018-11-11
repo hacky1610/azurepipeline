@@ -4,6 +4,10 @@ jobs:
   steps:
   - script: echo Hello!
     condition: always() # this step will always run, even if the pipeline is cancelled
+  - task: NodeTool@0
+    inputs:
+    versionSpec: '8.x'
+    displayName: 'Install Node.js'
 
 - job: Bar
   dependsOn: Foo
