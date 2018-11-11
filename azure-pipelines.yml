@@ -5,8 +5,7 @@
 # https://github.com/MicrosoftDocs/pipelines-javascript/blob/master/azure-pipelines.yml
 #by Daniel h
 
-pool:
-  vmImage: 'Ubuntu 16.04'
+
 
 variables:
     nodeDir: '$(Build.SourcesDirectory)/NodeApp'
@@ -15,6 +14,8 @@ variables:
 
 jobs:
 - job: BuildTest
+  pool:
+    vmImage: 'Ubuntu 16.04'
     steps:
     - script: | 
         echo '$(artifactDir)'
