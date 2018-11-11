@@ -1,12 +1,7 @@
 jobs:
 - job: Foo
 
-
-  steps:
-    variables:
-      nodeDir: '$(Build.SourcesDirectory)/NodeApp'
-      artifactDir: '$(Build.ArtifactStagingDirectory)'
-      
+  steps:      
   - script: echo Hello!
     
   - task: NodeTool@0
@@ -15,12 +10,12 @@ jobs:
     displayName: 'Install Node.js'
       
   - script: |
-      cd '$(nodeDir)'
+      cd '$(Build.SourcesDirectory)/NodeApp'
       npm install
     displayName: 'npm install'
 
   - script: |
-      cd '$(nodeDir)'
+      cd '$(Build.SourcesDirectory)/NodeApp'
       npm test
     displayName: 'Run test'
 
