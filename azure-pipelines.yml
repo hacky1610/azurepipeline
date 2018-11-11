@@ -2,6 +2,10 @@ jobs:
 - job: Foo
 
   steps:
+    variables:
+      nodeDir: '$(Build.SourcesDirectory)/NodeApp'
+      artifactDir: '$(Build.ArtifactStagingDirectory)'
+  
   - script: echo Hello!
     
   - task: NodeTool@0
