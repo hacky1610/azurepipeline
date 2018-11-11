@@ -34,7 +34,7 @@ steps:
     $global:var1 = "Bar"
   displayName: 'Run test'
   
-  - powershell: |
+- powershell: |
     Write-Output $global:var1
   displayName: 'Hello'
 
