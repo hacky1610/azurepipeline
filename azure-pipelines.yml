@@ -31,7 +31,12 @@ steps:
     cd '$(nodeDir)'
     npm test
     Write-Output "Foo $LASTEXITCODE $(Build.Reason)"
+    $global:var1 = "Bar"
   displayName: 'Run test'
+  
+  - powershell: |
+    Write-Output $global:var1
+  displayName: 'Hello'
 
 
 - task: PublishTestResults@2
