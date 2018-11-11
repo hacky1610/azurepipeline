@@ -30,7 +30,7 @@ steps:
 - powershell: |
     cd '$(nodeDir)'
     npm test
-    Write-Output "Foo $LASTEXITCODE"
+    Write-Output "Foo $LASTEXITCODE $(Build.Reason)"
   displayName: 'Run test'
 
 
