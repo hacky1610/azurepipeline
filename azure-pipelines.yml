@@ -33,6 +33,7 @@ steps:
     Write-Output "Foo $LASTEXITCODE $(Build.Reason)"
     $global:var1 = "Bar"
   displayName: 'Run test'
+  continueOnError: true
   
 - powershell: |
     Write-Output $global:var1
