@@ -1,10 +1,12 @@
 jobs:
 - job: Foo
-  variables:
-    nodeDir: '$(Build.SourcesDirectory)/NodeApp'
-    artifactDir: '$(Build.ArtifactStagingDirectory)'
+
 
   steps:
+    variables:
+      nodeDir: '$(Build.SourcesDirectory)/NodeApp'
+      artifactDir: '$(Build.ArtifactStagingDirectory)'
+      
   - script: echo Hello!
     
   - task: NodeTool@0
@@ -25,3 +27,6 @@ jobs:
 - job: Bar
   dependsOn: Foo
   condition: failed() # this job will only run if Foo fails
+  
+  steps:
+  - script: echo Failed!
