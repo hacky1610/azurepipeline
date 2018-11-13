@@ -31,12 +31,12 @@ steps:
     cd '$(nodeDir)'
     npm test
     Write-Output "Foo $LASTEXITCODE $(Build.Reason)"
-    $global:var1 = "Bar"
+    $env:DOW = "Bar"
   displayName: 'Run test'
   continueOnError: true
   
 - powershell: |
-    Write-Output $global:var1
+    Write-Output $env:DOW
   displayName: 'Hello'
 
 
