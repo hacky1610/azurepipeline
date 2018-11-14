@@ -29,7 +29,6 @@ steps:
   displayName: 'npm install'
 
 - powershell: |
-    cd '$(nodeDir)'
     npm test
     if ($LASTEXITCODE -eq 1) {
       Write-Output "The npm test has failed"
@@ -37,6 +36,8 @@ steps:
     }
   displayName: 'Run test'
   continueOnError: true
+  errorActionPreference: silentlyContinue
+  workingDirectory: '$(nodeDir)'
   
 - task: PublishTestResults@2
   inputs:
