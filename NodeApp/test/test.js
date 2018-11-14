@@ -8,6 +8,10 @@ describe('Calculator', function() {
      it('should return 3', function() {
       assert.equal(1+2, 3);
     });
+     
+   it('should return 4', function() {
+      assert.equal(1+2, 4);
+    });
     
   });
 });
