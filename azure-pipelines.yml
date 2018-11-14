@@ -5,6 +5,7 @@
 # https://github.com/MicrosoftDocs/pipelines-javascript/blob/master/azure-pipelines.yml
 # by Daniel Hackbarth
 
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
