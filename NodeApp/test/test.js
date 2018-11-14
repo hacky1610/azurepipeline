@@ -1,11 +1,11 @@
 var assert = require('assert');
 describe('Calculator', function() {
   describe('add', function() {
-    it('should return 2', function() {
+    it('1 + 1 should return 2', function() {
       assert.equal(1+1, 2);
     });
     
-     it('should return 3', function() {
+     it('1 + 2 should return 3', function() {
       assert.equal(1+2, 3);
     });
     
