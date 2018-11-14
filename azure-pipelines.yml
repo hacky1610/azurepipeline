@@ -32,12 +32,12 @@ steps:
     cd '$(nodeDir)'
     npm test
     Write-Output "Foo $LASTEXITCODE $(Build.Reason)"
-    $foo = "Bar"
+    $(foo) = "Bar"
   displayName: 'Run test'
   continueOnError: true
   
 - powershell: |
-    Write-Output "Info: $foo"
+    Write-Output "Info: $(foo)"
   displayName: 'Hello'
 
 
