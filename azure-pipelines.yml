@@ -36,7 +36,7 @@ steps:
   continueOnError: true
   
 - powershell: |
-    Write-Output $env:DOW
+    Write-Output "Info: $env:DOW"
   displayName: 'Hello'
 
 
