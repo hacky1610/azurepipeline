@@ -11,12 +11,6 @@ pool:
 variables:
     nodeDir: '$(Build.SourcesDirectory)/NodeApp'
     artifactDir: '$(Build.ArtifactStagingDirectory)'
-    foo: 'default'
-
-steps:
-- script: | 
-    echo '$(artifactDir)'
-    docker images
 
 - task: NodeTool@0
   inputs:
@@ -24,9 +18,9 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd '$(nodeDir)'
     npm install
   displayName: 'npm install'
+  workingDirectory: '$(nodeDir)'
 
 - powershell: |
     npm test
@@ -45,11 +39,11 @@ steps:
     testRunTitle: 'Test results for JavaScript'
     
 - powershell: |
-    cd '$(nodeDir)'
     if (Test-Path test.failed) {
       Write-Error "Test failed"
     }
   displayName: 'Test Status'
+  workingDirectory: '$(nodeDir)'
 
 - script: |
     docker build -t 'hacky1610/azurenodeapp:$(Build.BuildId)' .
