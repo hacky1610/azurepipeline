@@ -32,6 +32,7 @@ steps:
     cd '$(nodeDir)'
     npm test
     if ($LASTEXITCODE -eq 1) {
+      Write-Output "The npm test has failed"
       "Failed" | Set-Content  "test.failed"
     }
   displayName: 'Run test'
@@ -43,6 +44,7 @@ steps:
     testRunTitle: 'Test results for JavaScript'
     
 - powershell: |
+    cd '$(nodeDir)'
     if (Test-Path test.failed) {
       Write-Error "Test failed"
     }
