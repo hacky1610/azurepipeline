@@ -10,7 +10,7 @@ describe('Calculator', function() {
     });
     
      it('1 + 3 should return 4', function() {
-      assert.equal(1+3, 3);
+      assert.equal(1+3, 4);
     });
     
   });
