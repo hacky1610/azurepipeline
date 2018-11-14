@@ -11,6 +11,7 @@ pool:
 variables:
     nodeDir: '$(Build.SourcesDirectory)/NodeApp'
     artifactDir: '$(Build.ArtifactStagingDirectory)'
+    foo: 'default'
 
 steps:
 - script: | 
@@ -31,12 +32,12 @@ steps:
     cd '$(nodeDir)'
     npm test
     Write-Output "Foo $LASTEXITCODE $(Build.Reason)"
-    $env:DOW = "Bar"
+    $foo = "Bar"
   displayName: 'Run test'
   continueOnError: true
   
 - powershell: |
-    Write-Output "Info: $env:DOW"
+    Write-Output "Info: $foo"
   displayName: 'Hello'
 
 
