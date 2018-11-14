@@ -3,7 +3,7 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 # https://github.com/MicrosoftDocs/pipelines-javascript/blob/master/azure-pipelines.yml
-#by Daniel h
+# by Daniel Hackbarth
 
 pool:
   vmImage: 'Ubuntu 16.04'
