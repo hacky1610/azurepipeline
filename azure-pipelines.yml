@@ -11,6 +11,7 @@ pool:
 variables:
     nodeDir: '$(Build.SourcesDirectory)/NodeApp'
     artifactDir: '$(Build.ArtifactStagingDirectory)'
+    foo: 'default'
 
 steps:
 - script: | 
@@ -27,16 +28,28 @@ steps:
     npm install
   displayName: 'npm install'
 
-- script: |
-    cd '$(nodeDir)'
+- powershell: |
     npm test
+    if ($LASTEXITCODE -eq 1) {
+      Write-Output "The npm test has failed"
+      "Failed" | Set-Content  "test.failed"
+    }
   displayName: 'Run test'
   continueOnError: true
-
+  ignoreLASTEXITCODE: true
+  workingDirectory: '$(nodeDir)'
+  
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '$(nodeDir)/test-results.xml'
     testRunTitle: 'Test results for JavaScript'
+    
+- powershell: |
+    cd '$(nodeDir)'
+    if (Test-Path test.failed) {
+      Write-Error "Test failed"
+    }
+  displayName: 'Test Status'
 
 - script: |
     docker build -t 'hacky1610/azurenodeapp:$(Build.BuildId)' .
