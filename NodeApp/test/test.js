@@ -9,5 +9,9 @@ describe('Calculator', function() {
       assert.equal(1+2, 3);
     });
     
+     it('1 + 3 should return 4', function() {
+      assert.equal(1+3, 3);
+    });
+    
   });
 });
