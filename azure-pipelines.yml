@@ -31,20 +31,22 @@ steps:
 - powershell: |
     cd '$(nodeDir)'
     npm test
-    Write-Output "Foo $LASTEXITCODE $(Build.Reason)"
-    $foo = "Bar"
+    if ($LASTEXITCODE -eq 1) {
+      "Failed" | Set-Content  "test.failed"
+    }
   displayName: 'Run test'
   continueOnError: true
   
-- powershell: |
-    Write-Output "Info: $(foo)"
-  displayName: 'Hello'
-
-
 - task: PublishTestResults@2
   inputs:
     testResultsFiles: '$(nodeDir)/test-results.xml'
     testRunTitle: 'Test results for JavaScript'
+    
+- powershell: |
+    if (Test-Path test.failed) {
+      Write-Error "Test failed"
+    }
+  displayName: 'Test Status'
 
 - script: |
     docker build -t 'hacky1610/azurenodeapp:$(Build.BuildId)' .
