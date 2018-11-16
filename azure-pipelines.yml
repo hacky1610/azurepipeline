@@ -39,6 +39,12 @@ steps:
     inputs:
       testResultsFiles: '$(nodeDir)/test-results.xml'
       testRunTitle: 'Test results for JavaScript'
+
+  - task: PublishCodeCoverageResults@1
+    inputs: 
+      codeCoverageTool: Cobertura
+      summaryFileLocation: '$(nodeDir)/coverage/*coverage.xml'
+      reportDirectory: '$(nodeDir)/coverage'
       
   - powershell: |
       if (Test-Path test.failed) {
