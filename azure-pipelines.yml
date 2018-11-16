@@ -25,7 +25,7 @@ steps:
     workingDirectory: '$(nodeDir)'
 
   - powershell: |
-      npm test
+      npm coverage
       if ($LASTEXITCODE -eq 1) {
         Write-Output "The npm test has failed"
         "Failed" | Set-Content  "test.failed"
