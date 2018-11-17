@@ -21,7 +21,7 @@ steps:
 
   - script: |
       npm install
-      dir node_modules\\nyc\\node_modules\\istanbul-reports\\lib
+      dir node_modules\\nyc
     displayName: 'npm install'
     workingDirectory: '$(nodeDir)'
 
@@ -61,6 +61,7 @@ steps:
       docker push 'hacky1610/azurenodeapp:$(Build.BuildId)'
     displayName: 'Build docker'
     continueOnError: true
+    condition: eq(variables['Deploy'], 'true')
 
   - task: PublishBuildArtifacts@1
     inputs:
