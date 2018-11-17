@@ -21,7 +21,7 @@ steps:
 
   - script: |
       npm install
-      dir node_modules\\nyc
+      dir node_modules/nyc/node_modules
     displayName: 'npm install'
     workingDirectory: '$(nodeDir)'
 
