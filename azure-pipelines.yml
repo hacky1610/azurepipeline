@@ -21,6 +21,7 @@ steps:
 
   - script: |
       npm install
+      dir *
     displayName: 'npm install'
     workingDirectory: '$(nodeDir)'
 
