@@ -10,7 +10,7 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 variables:
-    nodeDir: '$(Build.SourcesDirectory)/NodeApp'
+    currentDir: '$(Build.SourcesDirectory)'
     artifactDir: '$(Build.ArtifactStagingDirectory)'
 
 steps:
@@ -22,7 +22,6 @@ steps:
   - script: |
       npm install
     displayName: 'npm install'
-    workingDirectory: '$(nodeDir)'
 
   - powershell: |
       npm run coverage
@@ -33,25 +32,23 @@ steps:
     displayName: 'Run test'
     continueOnError: true
     ignoreLASTEXITCODE: true
-    workingDirectory: '$(nodeDir)'
     
   - task: PublishTestResults@2
     inputs:
-      testResultsFiles: '$(nodeDir)/test-results.xml'
+      testResultsFiles: '$(currentDir)/test-results.xml'
       testRunTitle: 'Test results for JavaScript'
 
   - task: PublishCodeCoverageResults@1
     inputs: 
       codeCoverageTool: Cobertura
-      summaryFileLocation: '$(nodeDir)/coverage/*coverage.xml'
-      reportDirectory: '$(nodeDir)/coverage'
+      summaryFileLocation: '$(currentDir)/coverage/*coverage.xml'
+      reportDirectory: '$(currentDir)/coverage'
       
   - powershell: |
       if (Test-Path test.failed) {
         Write-Error "Test failed"
       }
     displayName: 'Test Status'
-    workingDirectory: '$(nodeDir)'
 
   - script: |
       docker build -t 'hacky1610/azurenodeapp:$(Build.BuildId)' .
@@ -64,7 +61,7 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: '$(nodeDir)' 
+      pathtoPublish: '$(currentDir)' 
       artifactName: 'drop' 
       publishLocation: 'Container' # Options: container, filePath
       #targetPath: # Required when publishLocation == FilePath
