@@ -21,7 +21,7 @@ steps:
 
   - script: |
       npm install
-      dir *
+      dir node_modules\nyc\node_modules\istanbul-reports\lib
     displayName: 'npm install'
     workingDirectory: '$(nodeDir)'
 
