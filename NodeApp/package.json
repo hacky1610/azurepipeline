@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test": "mocha test --reporter mocha-junit-reporter",
-    "coverage": "nyc --reporter cobertura --reporter text npm test"
+    "coverage": "nyc --reporter cobertura --reporter html npm test"
   },
   "repository": {
     "type": "git",

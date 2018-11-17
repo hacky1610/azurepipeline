@@ -44,7 +44,7 @@ steps:
     inputs: 
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(nodeDir)/coverage/*coverage.xml'
-      reportDirectory: '$(nodeDir)/.nyc_output'
+      reportDirectory: '$(nodeDir)/coverage'
       
   - powershell: |
       if (Test-Path test.failed) {
